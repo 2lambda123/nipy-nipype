@@ -2,11 +2,12 @@
 # emacs: -*- mode: python; py-indent-offset: 4; indent-tabs-mode: nil -*-
 # vi: set ft=python sts=4 ts=4 sw=4 et:
 import os
+from pathlib import Path
+from string import Template
 
 import pytest
 import requests
-from pathlib import Path
-from string import Template
+
 from nipype.interfaces import whitestripe
 from nipype.interfaces.r import get_r_command
 

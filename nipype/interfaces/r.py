@@ -6,15 +6,8 @@ import os
 from shutil import which
 
 from .. import config
-from .base import (
-    CommandLineInputSpec,
-    InputMultiPath,
-    isdefined,
-    CommandLine,
-    traits,
-    File,
-    Directory,
-)
+from .base import (CommandLine, CommandLineInputSpec, Directory, File,
+                   InputMultiPath, isdefined, traits)
 
 
 def get_r_command():
