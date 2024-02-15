@@ -266,4 +266,3 @@ set fmri(paradigm_hp) 100
 
 # Number of lower-level copes feeding into higher-level analysis
 set fmri(ncopeinputs) ${num_copes}
-
