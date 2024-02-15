@@ -33,7 +33,7 @@ class WhiteStripe(BaseInterface):
     def _run_interface(self, runtime):
         """
 
-        :param runtime: 
+        :param runtime:
 
         """
         tmpfile, script = self._cmdline(runtime)
@@ -62,7 +62,7 @@ class WhiteStripe(BaseInterface):
     def _cmdline(self, runtime):
         """
 
-        :param runtime: 
+        :param runtime:
 
         """
         d = dict(
@@ -126,7 +126,7 @@ class WhiteStripe(BaseInterface):
     def _read_indices(self, fn):
         """
 
-        :param fn: 
+        :param fn:
 
         """
         with open(fn) as f:
@@ -136,8 +136,8 @@ class WhiteStripe(BaseInterface):
     def _write_indices(self, fn, indices):
         """
 
-        :param fn: 
-        :param indices: 
+        :param fn:
+        :param indices:
 
         """
         with open(fn, "w") as f:

@@ -15,7 +15,7 @@ from nipype.interfaces.r import get_r_command
 def test_whitestripe(tmpdir):
     """
 
-    :param tmpdir: 
+    :param tmpdir:
 
     """
     cwd = tmpdir.chdir()

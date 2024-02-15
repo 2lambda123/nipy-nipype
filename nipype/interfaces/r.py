@@ -60,22 +60,22 @@ class RCommand(CommandLine):
 
     def set_default_r_cmd(self, r_cmd):
         """Set the default R command line for R classes.
-        
+
         This method is used to set values for all R
         subclasses.
 
-        :param r_cmd: 
+        :param r_cmd:
 
         """
         self._cmd = r_cmd
 
     def set_default_rfile(self, rfile):
         """Set the default R script file format for R classes.
-        
+
         This method is used to set values for all R
         subclasses.
 
-        :param rfile: 
+        :param rfile:
 
         """
         self._rfile = rfile
@@ -83,7 +83,7 @@ class RCommand(CommandLine):
     def _run_interface(self, runtime):
         """
 
-        :param runtime: 
+        :param runtime:
 
         """
         self.terminal_output = "allatonce"
@@ -95,9 +95,9 @@ class RCommand(CommandLine):
     def _format_arg(self, name, trait_spec, value):
         """
 
-        :param name: 
-        :param trait_spec: 
-        :param value: 
+        :param name:
+        :param trait_spec:
+        :param value:
 
         """
         if name in ["script"]:
@@ -108,8 +108,8 @@ class RCommand(CommandLine):
     def _gen_r_command(self, argstr, script_lines):
         """Generates commands and, if rfile specified, writes it to disk.
 
-        :param argstr: 
-        :param script_lines: 
+        :param argstr:
+        :param script_lines:
 
         """
         if not self.inputs.rfile:
