@@ -2,8 +2,11 @@ import os
 import tempfile
 from string import Template
 
-from nipype.interfaces.base import (BaseInterface, BaseInterfaceInputSpec,
-                                    File, TraitedSpec, traits)
+from nipype.interfaces.base import BaseInterface
+from nipype.interfaces.base import BaseInterfaceInputSpec
+from nipype.interfaces.base import File
+from nipype.interfaces.base import TraitedSpec
+from nipype.interfaces.base import traits
 from nipype.interfaces.r import RCommand
 
 
