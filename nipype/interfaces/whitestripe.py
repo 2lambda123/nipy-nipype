@@ -15,9 +15,9 @@ class WhiteStripeInputSpec(BaseInterfaceInputSpec):
     in_file = File(exists=True, mandatory=True)
     out_file = File("out.nii.gz", usedefault=True)
     indices = traits.Array(desc="WhiteStripe indices", mandatory=False)
-    img_type = traits.String(
-        desc="WhiteStripe image type", mandatory=False, default="T1"
-    )
+    img_type = traits.String(desc="WhiteStripe image type",
+                             mandatory=False,
+                             default="T1")
 
 
 class WhiteStripeOutputSpec(TraitedSpec):
@@ -72,8 +72,7 @@ class WhiteStripe(BaseInterface):
         )
         if len(self.inputs.indices) == 0:
             tmpfile = False
-            script = Template(
-                """
+            script = Template("""
                 library(neurobase)
                 library(WhiteStripe)
                 in_file = readnii('$in_file')
@@ -81,15 +80,13 @@ class WhiteStripe(BaseInterface):
                 norm = whitestripe_norm(in_file, ind)
                 out_file = '$out_file'
                 writenii(norm, out_file)
-                """
-            ).substitute(d)
+                """).substitute(d)
         else:
             # d['indices'] = ",".join(map(str, self.inputs.indices))
             tmpfile = tempfile.mkstemp()[1]
             self._write_indices(tmpfile, self.inputs.indices)
             d["indices"] = tmpfile
-            script = Template(
-                """
+            script = Template("""
                 library(neurobase)
                 library(WhiteStripe)
                 in_file = readnii('$in_file')
@@ -98,26 +95,23 @@ class WhiteStripe(BaseInterface):
                 norm = whitestripe_norm(in_file, ind)
                 out_file = '$out_file'
                 writenii(norm, out_file)
-                """
-            ).substitute(d)
+                """).substitute(d)
 
         return tmpfile, script
 
     def gen_indices(self):
         """ """
         path = tempfile.mkstemp()[1]
-        d = dict(
-            in_file=self.inputs.in_file, out_file=path, img_type=self.inputs.img_type
-        )
-        script = Template(
-            """
+        d = dict(in_file=self.inputs.in_file,
+                 out_file=path,
+                 img_type=self.inputs.img_type)
+        script = Template("""
             library(neurobase)
             library(WhiteStripe)
             in_file = readnii('$in_file')
             t1_ind = whitestripe(in_file, "$img_type")$$whitestripe.ind
             write.table(t1_ind, file = "$out_file", row.names = F, col.names = F)
-            """
-        ).substitute(d)
+            """).substitute(d)
         RCommand(script=script, rfile=False).run()
         ret = self._read_indices(path)
         os.remove(path)

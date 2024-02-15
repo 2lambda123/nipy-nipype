@@ -38,14 +38,11 @@ def test_whitestripe(tmpdir):
                 norm = whitestripe_norm(in_file, ind)
                 out_file = '$out_file'
                 writenii(norm, out_file)
-                """
-    ).substitute(
-        {
+                """).substitute({
             "in_file": normalizer.inputs.in_file,
             "out_file": normalizer.inputs.out_file,
             "img_type": normalizer.inputs.img_type,
-        }
-    )
+        })
     assert tmpfile is False
     assert script == expected_script
     os.remove(normalizer.inputs.in_file)

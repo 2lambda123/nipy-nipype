@@ -5,16 +5,12 @@ from ..whitestripe import WhiteStripe
 def test_WhiteStripe_inputs():
     """ """
     input_map = dict(
-        img_type=dict(
-            mandatory=False,
-        ),
+        img_type=dict(mandatory=False, ),
         in_file=dict(
             extensions=None,
             mandatory=True,
         ),
-        indices=dict(
-            mandatory=False,
-        ),
+        indices=dict(mandatory=False, ),
         out_file=dict(
             extensions=None,
             usedefault=True,
@@ -29,11 +25,7 @@ def test_WhiteStripe_inputs():
 
 def test_WhiteStripe_outputs():
     """ """
-    output_map = dict(
-        out_file=dict(
-            extensions=None,
-        ),
-    )
+    output_map = dict(out_file=dict(extensions=None, ), )
     outputs = WhiteStripe.output_spec()
 
     for key, metadata in list(output_map.items()):

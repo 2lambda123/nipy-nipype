@@ -30,14 +30,15 @@ no_r = get_r_command() is None
 class RInputSpec(CommandLineInputSpec):
     """Basic expected inputs to R interface"""
 
-    script = traits.Str(
-        argstr='-e "%s"', desc="R code to run", mandatory=True, position=-1
-    )
+    script = traits.Str(argstr='-e "%s"',
+                        desc="R code to run",
+                        mandatory=True,
+                        position=-1)
     # non-commandline options
     rfile = traits.Bool(True, desc="Run R using R script", usedefault=True)
-    script_file = File(
-        "pyscript.R", usedefault=True, desc="Name of file to write R code to"
-    )
+    script_file = File("pyscript.R",
+                       usedefault=True,
+                       desc="Name of file to write R code to")
 
 
 class RCommand(CommandLine):
@@ -119,13 +120,10 @@ class RCommand(CommandLine):
                     filter(
                         None,  # drop empty lines
                         [
-                            line
-                            for line in script_lines.split("\n")
-                            if not line.strip().startswith("#")  # strip comments
+                            line for line in script_lines.split("\n") if
+                            not line.strip().startswith("#")  # strip comments
                         ],
-                    )
-                )
-            )
+                    )))
             # escape " and $
             script = script.replace('"', '\\"')
             script = script.replace("$", "\\$")
