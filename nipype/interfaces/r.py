@@ -11,6 +11,7 @@ from .base import (CommandLine, CommandLineInputSpec, Directory, File,
 
 
 def get_r_command():
+    """ """
     if "NIPYPE_NO_R" in os.environ:
         return None
     r_cmd = os.getenv("RCMD", default="R")
@@ -35,13 +36,7 @@ class RInputSpec(CommandLineInputSpec):
 
 
 class RCommand(CommandLine):
-    """Interface that runs R code
-
-    >>> import nipype.interfaces.r as r
-    >>> r = r.RCommand(rfile=False) # doctest: +SKIP
-    >>> r.inputs.script = "Sys.getenv('USER')" # doctest: +SKIP
-    >>> out = r.run()  # doctest: +SKIP
-    """
+    """Interface that runs R code"""
 
     _cmd = get_r_command()
     input_spec = RInputSpec
@@ -60,21 +55,32 @@ class RCommand(CommandLine):
 
     def set_default_r_cmd(self, r_cmd):
         """Set the default R command line for R classes.
-
+        
         This method is used to set values for all R
         subclasses.
+
+        :param r_cmd: 
+
         """
         self._cmd = r_cmd
 
     def set_default_rfile(self, rfile):
         """Set the default R script file format for R classes.
-
+        
         This method is used to set values for all R
         subclasses.
+
+        :param rfile: 
+
         """
         self._rfile = rfile
 
     def _run_interface(self, runtime):
+        """
+
+        :param runtime: 
+
+        """
         self.terminal_output = "allatonce"
         runtime = super(RCommand, self)._run_interface(runtime)
         if "R code threw an exception" in runtime.stderr:
@@ -82,13 +88,25 @@ class RCommand(CommandLine):
         return runtime
 
     def _format_arg(self, name, trait_spec, value):
+        """
+
+        :param name: 
+        :param trait_spec: 
+        :param value: 
+
+        """
         if name in ["script"]:
             argstr = trait_spec.argstr
             return self._gen_r_command(argstr, value)
         return super(RCommand, self)._format_arg(name, trait_spec, value)
 
     def _gen_r_command(self, argstr, script_lines):
-        """Generates commands and, if rfile specified, writes it to disk."""
+        """Generates commands and, if rfile specified, writes it to disk.
+
+        :param argstr: 
+        :param script_lines: 
+
+        """
         if not self.inputs.rfile:
             # replace newlines with ;
             script = "; ".join(

@@ -8,6 +8,7 @@ from nipype.interfaces.r import RCommand
 
 
 class WhiteStripeInputSpec(BaseInterfaceInputSpec):
+    """ """
     in_file = File(exists=True, mandatory=True)
     out_file = File("out.nii.gz", usedefault=True)
     indices = traits.Array(desc="WhiteStripe indices", mandatory=False)
@@ -17,14 +18,21 @@ class WhiteStripeInputSpec(BaseInterfaceInputSpec):
 
 
 class WhiteStripeOutputSpec(TraitedSpec):
+    """ """
     out_file = File(exists=True)
 
 
 class WhiteStripe(BaseInterface):
+    """ """
     input_spec = WhiteStripeInputSpec
     output_spec = WhiteStripeOutputSpec
 
     def _run_interface(self, runtime):
+        """
+
+        :param runtime: 
+
+        """
         tmpfile, script = self._cmdline(runtime)
 
         # rfile = True  will create a .R file with your script and executed.
@@ -43,11 +51,17 @@ class WhiteStripe(BaseInterface):
         return result.runtime
 
     def _list_outputs(self):
+        """ """
         outputs = self._outputs().get()
         outputs["out_file"] = os.path.abspath(self.inputs.out_file)
         return outputs
 
     def _cmdline(self, runtime):
+        """
+
+        :param runtime: 
+
+        """
         d = dict(
             in_file=self.inputs.in_file,
             out_file=self.inputs.out_file,
@@ -87,6 +101,7 @@ class WhiteStripe(BaseInterface):
         return tmpfile, script
 
     def gen_indices(self):
+        """ """
         path = tempfile.mkstemp()[1]
         d = dict(
             in_file=self.inputs.in_file, out_file=path, img_type=self.inputs.img_type
@@ -106,11 +121,22 @@ class WhiteStripe(BaseInterface):
         return ret
 
     def _read_indices(self, fn):
+        """
+
+        :param fn: 
+
+        """
         with open(fn) as f:
             # read lines as ints
             return list(map(int, f))
 
     def _write_indices(self, fn, indices):
+        """
+
+        :param fn: 
+        :param indices: 
+
+        """
         with open(fn, "w") as f:
             for idx in indices:
                 f.write("{}\n".format(idx))

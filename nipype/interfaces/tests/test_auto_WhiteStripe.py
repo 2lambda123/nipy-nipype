@@ -3,6 +3,7 @@ from ..whitestripe import WhiteStripe
 
 
 def test_WhiteStripe_inputs():
+    """ """
     input_map = dict(
         img_type=dict(
             mandatory=False,
@@ -27,6 +28,7 @@ def test_WhiteStripe_inputs():
 
 
 def test_WhiteStripe_outputs():
+    """ """
     output_map = dict(
         out_file=dict(
             extensions=None,
