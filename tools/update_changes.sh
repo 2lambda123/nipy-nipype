@@ -43,4 +43,3 @@ fi
 
 # Replace old CHANGES with new file
 mv newchanges $CHANGES
-

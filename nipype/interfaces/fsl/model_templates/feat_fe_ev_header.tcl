@@ -40,6 +40,3 @@ set fmri(ortho1.0) 0
 
 # Orthogonalise EV 1 wrt EV 1
 set fmri(ortho1.1) 0
-
-
-
