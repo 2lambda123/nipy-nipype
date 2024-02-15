@@ -11,7 +11,6 @@ Usage:
 
 # Make main executable
 if __name__ == '__main__':
-
     # Import packages
     import argparse
     from nipype.utils.profiler import _use_resources
@@ -25,13 +24,15 @@ if __name__ == '__main__':
         '--num_gb',
         required=True,
         type=float,
-        help='Number of GB RAM to use, can be float or int')
+        help='Number of GB RAM to use, can be float or int',
+    )
     parser.add_argument(
         '-p',
         '--num_threads',
         required=True,
         type=int,
-        help='Number of threads to run in parallel')
+        help='Number of threads to run in parallel',
+    )
 
     # Parse args
     args = parser.parse_args()
