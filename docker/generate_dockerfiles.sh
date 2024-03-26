@@ -91,7 +91,7 @@ function generate_main_dockerfile() {
     --arg PYTHON_VERSION_MAJOR=3 PYTHON_VERSION_MINOR=8 R_VERSION_MAJOR=4 R_VERSION_MINOR=1 R_VERSION_PATCH=0 R_CONFIGURE_OPTS=CONFIGURE_OPTIONS="--with-cairo --with-jpeglib --enable-R-shlib --with-blas --with-lapack" BUILD_DATE VCS_REF VERSION \
     --run 'curl -LO https://cran.rstudio.com/src/base/R-${R_VERSION_MAJOR}/R-${R_VERSION_MAJOR}.${R_VERSION_MINOR}.${R_VERSION_PATCH}.tar.gz
   && tar zxvf R-${R_VERSION_MAJOR}.${R_VERSION_MINOR}.${R_VERSION_PATCH}.tar.gz
-  && rm R-${R_VERSION_MAJOR}.${R_VERSION_MINOR}.${R_VERSION_PATCH}.tar.gz 
+  && rm R-${R_VERSION_MAJOR}.${R_VERSION_MINOR}.${R_VERSION_PATCH}.tar.gz
   && cd R-${R_VERSION_MAJOR}.${R_VERSION_MINOR}.${R_VERSION_PATCH}
   && ./configure ${CONFIGURE_OPTIONS}
   && make && make install && cd .. && rm -rf R-${R_VERSION_MAJOR}.${R_VERSION_MINOR}.${R_VERSION_PATCH}

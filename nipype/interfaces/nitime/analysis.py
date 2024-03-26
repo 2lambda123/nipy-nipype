@@ -149,7 +149,11 @@ class CoherenceAnalyzer(NitimeBaseInterface):
             )
 
         roi_names = (
-            open(self.inputs.in_file).readline(5_000_000).replace('"', "").strip("\n").split(",")
+            open(self.inputs.in_file)
+            .readline(5_000_000)
+            .replace('"', "")
+            .strip("\n")
+            .split(",")
         )
         # Transpose, so that the time is the last dimension:
         data = np.loadtxt(self.inputs.in_file, skiprows=1, delimiter=",").T
