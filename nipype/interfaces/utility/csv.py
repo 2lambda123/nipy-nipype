@@ -59,7 +59,7 @@ class CSVReader(BaseInterface):
 
     def _get_outfields(self):
         with open(self.inputs.in_file) as fid:
-            entry = self._parse_line(fid.readline())
+            entry = self._parse_line(fid.readline(5_000_000))
             if self.inputs.header:
                 self._outfields = tuple(entry)
             else:

@@ -494,7 +494,7 @@ def merge_csvs(in_list):
                 in_array = np.loadtxt(in_file, delimiter=",", skiprows=1)
             except ValueError:
                 with open(in_file) as first:
-                    header_line = first.readline()
+                    header_line = first.readline(5_000_000)
 
                 header_list = header_line.split(",")
                 n_cols = len(header_list)
@@ -778,7 +778,7 @@ class AddCSVColumn(BaseInterface):
         out_file = op.abspath(name + ext)
 
         out_file = open(out_file, "w")
-        firstline = in_file.readline()
+        firstline = in_file.readline(5_000_000)
         firstline = firstline.replace("\n", "")
         new_firstline = firstline + ',"' + self.inputs.extra_column_heading + '"\n'
         out_file.write(new_firstline)
