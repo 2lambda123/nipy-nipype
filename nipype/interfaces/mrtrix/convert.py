@@ -102,7 +102,9 @@ def read_mrtrix_streamlines(in_file, header, as_generator=True):
                 if idx == 0:
                     track_points.append(nonfinite_list[idx])
                 else:
-                    track_points.append(nonfinite_list[idx] - nonfinite_list[idx - 1] - 1)
+                    track_points.append(
+                        nonfinite_list[idx] - nonfinite_list[idx - 1] - 1
+                    )
             return track_points, nonfinite_list
 
         def track_gen(track_points):
@@ -121,7 +123,9 @@ def read_mrtrix_streamlines(in_file, header, as_generator=True):
                             f"Expecting {stream_count} points, found only {n_streams}"
                         )
                         iflogger.error(
-                            "Expecting %s points, found only %s", stream_count, n_streams
+                            "Expecting %s points, found only %s",
+                            stream_count,
+                            n_streams,
                         )
                     break
                 pts = np.ndarray(shape=(n_pts, pt_cols), dtype=f4dt, buffer=pts_str)
