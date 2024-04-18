@@ -65,8 +65,7 @@ class BuildWithCommitInfoCommand(build_py):
             "git rev-parse --short HEAD",
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
-            shell=True,
-        )
+            shell=False)
         repo_commit = proc.communicate()[0].decode()
 
         # We write the installation commit even if it's empty

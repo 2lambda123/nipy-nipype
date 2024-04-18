@@ -708,8 +708,7 @@ class CommandLine(BaseInterface):
             env.update(out_environ)
             proc = sp.Popen(
                 " ".join((cmd, flag)),
-                shell=True,
-                env=canonicalize_env(env),
+                shell=False, env=canonicalize_env(env),
                 stdout=sp.PIPE,
                 stderr=sp.PIPE,
             )

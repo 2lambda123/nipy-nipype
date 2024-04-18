@@ -849,7 +849,7 @@ def get_dependencies(name, environ):
     deps = None
     try:
         proc = sp.Popen(
-            command, stdout=sp.PIPE, stderr=sp.PIPE, shell=True, env=environ
+            command, stdout=sp.PIPE, stderr=sp.PIPE, shell=False, env=environ
         )
         o, e = proc.communicate()
         deps = o.rstrip()

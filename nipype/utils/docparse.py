@@ -34,8 +34,7 @@ def grab_doc(cmd, trap_error=True):
     """
 
     proc = subprocess.Popen(
-        cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True
-    )
+        cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=False)
     stdout, stderr = proc.communicate()
 
     if trap_error and proc.returncode:

@@ -33,7 +33,7 @@ def get_nipype_gitversion():
     ver = None
     try:
         o, _ = subprocess.Popen(
-            "git describe", shell=True, cwd=gitpath, stdout=subprocess.PIPE
+            "git describe", shell=False, cwd=gitpath, stdout=subprocess.PIPE
         ).communicate()
     except Exception:
         pass

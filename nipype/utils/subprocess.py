@@ -107,8 +107,7 @@ def run_command(runtime, output=None, timeout=0.01, write_cmdline=False):
         cmdline,
         stdout=stdout,
         stderr=stderr,
-        shell=True,
-        cwd=runtime.cwd,
+        shell=False, cwd=runtime.cwd,
         env=env,
         close_fds=(not sys.platform.startswith("win")),
     )
