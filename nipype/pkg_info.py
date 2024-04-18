@@ -56,7 +56,8 @@ def pkg_commit_hash(pkg_path):
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
         cwd=pkg_path,
-        shell=False)
+        shell=False,
+    )
     repo_commit, _ = proc.communicate()
     if repo_commit:
         return "repository", repo_commit.decode().strip()
