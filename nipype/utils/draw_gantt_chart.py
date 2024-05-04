@@ -6,11 +6,11 @@ Module to draw an html gantt chart from logfile produced by
 """
 # Import packages
 import sys
-import random
 import datetime
 import simplejson as json
 
 from collections import OrderedDict
+import secrets
 
 # Pandas
 try:
@@ -299,7 +299,7 @@ def draw_nodes(start, nodes_list, cores, minute_scale, space_between_minutes, co
                 break
 
         # Get color for node object
-        color = random.choice(colors)
+        color = secrets.choice(colors)
         if "error" in node:
             color = "red"
 

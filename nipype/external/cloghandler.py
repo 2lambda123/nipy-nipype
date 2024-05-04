@@ -38,6 +38,7 @@ low-latency solution, I suggest you look elsewhere.
 See the README file for an example usage of this module.
 
 """
+import secrets
 
 
 __version__ = "$Id: cloghandler.py 6175 2009-11-02 18:40:35Z lowell $"
@@ -46,7 +47,6 @@ __all__ = ["ConcurrentRotatingFileHandler"]
 
 import os
 import sys
-from random import randint
 from logging import Handler
 from logging.handlers import BaseRotatingHandler
 
@@ -260,7 +260,7 @@ class ConcurrentRotatingFileHandler(BaseRotatingHandler):
             # Attempt to rename logfile to tempname:  There is a slight race-condition here, but it seems unavoidable
             tmpname = None
             while not tmpname or os.path.exists(tmpname):
-                tmpname = "%s.rotate.%08d" % (self.baseFilename, randint(0, 99999999))
+                tmpname = "%s.rotate.%08d" % (self.baseFilename, secrets.SystemRandom().randint(0, 99999999))
             try:
                 # Do a rename test to determine if we can successfully rename the log file
                 os.rename(self.baseFilename, tmpname)

@@ -8,14 +8,13 @@ import time
 
 import xml.dom.minidom
 
-import random
-
 from ... import logging
 from ...interfaces.base import CommandLine
 from .base import SGELikeBatchManagerBase, logger
+import secrets
 
 iflogger = logging.getLogger("nipype.interface")
-DEBUGGING_PREFIX = str(int(random.uniform(100, 999)))
+DEBUGGING_PREFIX = str(int(secrets.SystemRandom().uniform(100, 999)))
 
 
 def sge_debug_print(message):
