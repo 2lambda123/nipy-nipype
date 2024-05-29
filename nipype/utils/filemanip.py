@@ -22,6 +22,7 @@ from time import sleep, time
 
 from .. import logging, config, __version__ as version
 from .misc import is_container
+from security import safe_command
 
 fmlogger = logging.getLogger("nipype.utils")
 
@@ -848,8 +849,7 @@ def get_dependencies(name, environ):
 
     deps = None
     try:
-        proc = sp.Popen(
-            command, stdout=sp.PIPE, stderr=sp.PIPE, shell=True, env=environ
+        proc = safe_command.run(sp.Popen, command, stdout=sp.PIPE, stderr=sp.PIPE, shell=True, env=environ
         )
         o, e = proc.communicate()
         deps = o.rstrip()

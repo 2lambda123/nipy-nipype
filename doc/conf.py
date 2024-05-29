@@ -18,6 +18,7 @@ import sys
 from packaging.version import Version
 import nipype
 import subprocess as sp
+from security import safe_command
 
 # Disable etelemetry during doc builds
 os.environ["NIPYPE_NO_ET"] = "1"
@@ -51,8 +52,7 @@ with TemporaryDirectory() as tmpdir:
         ignore=lambda src, names: [n for n in names if n.endswith(".ipynb")],
     )
 
-sp.run(
-    [
+safe_command.run(sp.run, [
         sys.executable,
         ex2rst,
         "--outdir",
@@ -67,8 +67,7 @@ sp.run(
     ],
     check=True,
 )
-sp.run(
-    [
+safe_command.run(sp.run, [
         sys.executable,
         ex2rst,
         "--outdir",

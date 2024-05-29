@@ -10,6 +10,7 @@ import fnmatch
 import tempfile
 from subprocess import call
 from optparse import OptionParser
+from security import safe_command
 
 verbose = False
 
@@ -19,10 +20,10 @@ def clone_repo(url, branch):
     tmpdir = tempfile.mkdtemp()
     try:
         cmd = f"git clone {url} {tmpdir}"
-        call(cmd, shell=True)
+        safe_command.run(call, cmd, shell=True)
         os.chdir(tmpdir)
         cmd = "git checkout %s" % branch
-        call(cmd, shell=True)
+        safe_command.run(call, cmd, shell=True)
     except:
         shutil.rmtree(tmpdir)
         raise

@@ -15,6 +15,7 @@ docstring = docparse.get_doc(better.cmd, better.opt_map)
 import subprocess
 from ..interfaces.base import CommandLine
 from .misc import is_container
+from security import safe_command
 
 
 def grab_doc(cmd, trap_error=True):
@@ -33,8 +34,7 @@ def grab_doc(cmd, trap_error=True):
         The command line documentation
     """
 
-    proc = subprocess.Popen(
-        cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True
+    proc = safe_command.run(subprocess.Popen, cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True
     )
     stdout, stderr = proc.communicate()
 

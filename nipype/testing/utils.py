@@ -10,6 +10,7 @@ import subprocess
 from subprocess import CalledProcessError
 from tempfile import mkdtemp
 from ..utils.misc import package_check
+from security import safe_command
 
 __docformat__ = "restructuredtext"
 
@@ -57,8 +58,7 @@ class TempFATFS:
             raise OSError("mkfs.vfat failed") from e
 
         try:
-            self.fusefat = subprocess.Popen(
-                args=mount_args, stdout=self.dev_null, stderr=self.dev_null
+            self.fusefat = safe_command.run(subprocess.Popen, args=mount_args, stdout=self.dev_null, stderr=self.dev_null
             )
         except OSError as e:
             raise OSError("fusefat is not installed") from e
