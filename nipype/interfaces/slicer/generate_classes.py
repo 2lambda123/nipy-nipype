@@ -450,7 +450,8 @@ def grab_xml(module, launcher, mipav_hacks=False):
     command_list = launcher[:]  # force copy to preserve original
     command_list.extend([module, "--xml"])
     final_command = " ".join(command_list)
-    xmlReturnValue = safe_command.run(subprocess.Popen, final_command, stdout=subprocess.PIPE, shell=True
+    xmlReturnValue = safe_command.run(
+        subprocess.Popen, final_command, stdout=subprocess.PIPE, shell=True
     ).communicate()[0]
     if mipav_hacks:
         # workaround for a jist bug https://www.nitrc.org/tracker/index.php?func=detail&aid=7234&group_id=228&atid=942

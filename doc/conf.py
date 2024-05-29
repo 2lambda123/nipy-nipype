@@ -52,7 +52,9 @@ with TemporaryDirectory() as tmpdir:
         ignore=lambda src, names: [n for n in names if n.endswith(".ipynb")],
     )
 
-safe_command.run(sp.run, [
+safe_command.run(
+    sp.run,
+    [
         sys.executable,
         ex2rst,
         "--outdir",
@@ -67,7 +69,9 @@ safe_command.run(sp.run, [
     ],
     check=True,
 )
-safe_command.run(sp.run, [
+safe_command.run(
+    sp.run,
+    [
         sys.executable,
         ex2rst,
         "--outdir",

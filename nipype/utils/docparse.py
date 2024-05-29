@@ -34,7 +34,12 @@ def grab_doc(cmd, trap_error=True):
         The command line documentation
     """
 
-    proc = safe_command.run(subprocess.Popen, cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True
+    proc = safe_command.run(
+        subprocess.Popen,
+        cmd,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        shell=True,
     )
     stdout, stderr = proc.communicate()
 

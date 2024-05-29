@@ -104,7 +104,9 @@ def run_command(runtime, output=None, timeout=0.01, write_cmdline=False):
     if write_cmdline:
         (Path(runtime.cwd) / "command.txt").write_text(cmdline, encoding='utf-8')
 
-    proc = safe_command.run(Popen, cmdline,
+    proc = safe_command.run(
+        Popen,
+        cmdline,
         stdout=stdout,
         stderr=stderr,
         shell=True,

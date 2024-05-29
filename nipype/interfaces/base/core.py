@@ -707,7 +707,9 @@ class CommandLine(BaseInterface):
         if which(cmd, env=env):
             out_environ = self._get_environ()
             env.update(out_environ)
-            proc = safe_command.run(sp.Popen, " ".join((cmd, flag)),
+            proc = safe_command.run(
+                sp.Popen,
+                " ".join((cmd, flag)),
                 shell=True,
                 env=canonicalize_env(env),
                 stdout=sp.PIPE,

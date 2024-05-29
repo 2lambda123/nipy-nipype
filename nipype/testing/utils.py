@@ -58,7 +58,11 @@ class TempFATFS:
             raise OSError("mkfs.vfat failed") from e
 
         try:
-            self.fusefat = safe_command.run(subprocess.Popen, args=mount_args, stdout=self.dev_null, stderr=self.dev_null
+            self.fusefat = safe_command.run(
+                subprocess.Popen,
+                args=mount_args,
+                stdout=self.dev_null,
+                stderr=self.dev_null,
             )
         except OSError as e:
             raise OSError("fusefat is not installed") from e

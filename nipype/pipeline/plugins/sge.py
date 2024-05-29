@@ -167,7 +167,9 @@ class QstatSubstitute:
         while qacct_retries > 0:
             qacct_retries -= 1
             try:
-                proc = safe_command.run(subprocess.Popen, [
+                proc = safe_command.run(
+                    subprocess.Popen,
+                    [
                         this_command,
                         "-o",
                         pwd.getpwuid(os.getuid())[0],
@@ -295,7 +297,9 @@ class QstatSubstitute:
         while qstat_retries > 0:
             qstat_retries -= 1
             try:
-                proc = safe_command.run(subprocess.Popen, [
+                proc = safe_command.run(
+                    subprocess.Popen,
+                    [
                         this_command,
                         "-u",
                         pwd.getpwuid(os.getuid())[0],
