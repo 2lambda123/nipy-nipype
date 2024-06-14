@@ -192,7 +192,8 @@ connected.
                         ".io" in str(destnode._interface.__class__)
                         or any(
                             ".io" in str(val)
-                                for val in destnode._interface.__class__.__bases__)
+                            for val in destnode._interface.__class__.__bases__
+                        )
                     )
                 ):
                     if not destnode._check_inputs(dest):
@@ -203,7 +204,8 @@ connected.
                         ".io" in str(srcnode._interface.__class__)
                         or any(
                             ".io" in str(val)
-                                for val in srcnode._interface.__class__.__bases__)
+                            for val in srcnode._interface.__class__.__bases__
+                        )
                     )
                 ):
                     if isinstance(source, tuple):
