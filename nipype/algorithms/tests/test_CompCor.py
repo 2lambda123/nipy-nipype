@@ -262,7 +262,7 @@ class TestCompCor:
         assert os.path.getsize(expected_file) > 0
 
         with open(ccresult.outputs.components_file) as components_file:
-            header = components_file.readline().rstrip().split("\t")
+            header = components_file.readline(5_000_000).rstrip().split("\t")
             components_data = np.loadtxt(components_file, delimiter="\t")
 
         if expected_n_components is None:

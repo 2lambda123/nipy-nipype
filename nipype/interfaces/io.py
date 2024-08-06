@@ -477,8 +477,8 @@ class DataSink(IOBase):
         if creds_path and os.path.exists(creds_path):
             with open(creds_path) as creds_in:
                 # Grab csv rows
-                row1 = creds_in.readline()
-                row2 = creds_in.readline()
+                row1 = creds_in.readline(5_000_000)
+                row2 = creds_in.readline(5_000_000)
 
             # Are they root or user keys
             if "User Name" in row1:

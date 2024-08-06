@@ -142,14 +142,18 @@ class CoherenceAnalyzer(NitimeBaseInterface):
 
         """
         # Check that input conforms to expectations:
-        first_row = open(self.inputs.in_file).readline()
+        first_row = open(self.inputs.in_file).readline(5_000_000)
         if not first_row[1].isalpha():
             raise ValueError(
                 "First row of in_file should contain ROI names as strings of characters"
             )
 
         roi_names = (
-            open(self.inputs.in_file).readline().replace('"', "").strip("\n").split(",")
+            open(self.inputs.in_file)
+            .readline(5_000_000)
+            .replace('"', "")
+            .strip("\n")
+            .split(",")
         )
         # Transpose, so that the time is the last dimension:
         data = np.loadtxt(self.inputs.in_file, skiprows=1, delimiter=",").T
