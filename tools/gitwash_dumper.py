@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-""" Checkout gitwash repo into directory and do search replace on name """
+"""Checkout gitwash repo into directory and do search replace on name"""
 import os
 from os.path import join as pjoin
 import shutil
